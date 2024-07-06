@@ -9,6 +9,7 @@ var can_move := true
 var dash := false
 @export_range(0.1,2) var dash_cooldown := 0.5
 var ducking := false
+var gamepad_active := true
 
 @export_group('jump')
 @export var jump_strength := 300
@@ -17,6 +18,10 @@ var ducking := false
 var jump := false
 var faster_fall := false
 var gravity_multiplier := 1
+
+@export_group('gun')
+var aim_direction := Vector2.RIGHT
+@export var crosshair_distance := 20
 
 func _ready():
 	$Timers/DashCooldown.wait_time = dash_cooldown
@@ -28,7 +33,11 @@ func _process(delta):
 	if can_move:
 		get_input()
 		apply_movement(delta)
+		animate()
 
+
+func animate():
+	$Crosshair.update(aim_direction, crosshair_distance, ducking)
 
 func get_input():
 	# horizontal movement 
@@ -52,6 +61,20 @@ func get_input():
 	
 	# ducking
 	ducking = Input.is_action_pressed("duck") and is_on_floor()
+
+	#aim
+	var aim_input_gamepad = Input.get_vector("aim_left","aim_right","aim_up","aim_down")
+	var aim_input_mouse = get_local_mouse_position().normalized()
+	var aim_input = aim_input_gamepad if gamepad_active else aim_input_mouse
+	if aim_input.length() > 0.5:
+		aim_direction = Vector2(round(aim_input.x),round(aim_input.y))
+	
+	
+func _input(event):
+	if event is InputEventMouseMotion:
+		gamepad_active = false
+	if Input.get_vector("aim_left","aim_right","aim_up","aim_down"):
+		gamepad_active = true
 
 
 func apply_movement(delta):
