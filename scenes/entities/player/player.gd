@@ -22,6 +22,7 @@ var gravity_multiplier := 1
 @export_group('gun')
 var aim_direction := Vector2.RIGHT
 @export var crosshair_distance := 20
+const crosshair_y_offset := 6
 
 func _ready():
 	$Timers/DashCooldown.wait_time = dash_cooldown
