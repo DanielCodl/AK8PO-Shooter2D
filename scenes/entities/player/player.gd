@@ -39,6 +39,7 @@ func _process(delta):
 
 func animate():
 	$Crosshair.update(aim_direction, crosshair_distance, ducking)
+	$PlayerGraphics.update_legs(direction, is_on_floor(), ducking)
 
 func get_input():
 	# horizontal movement 

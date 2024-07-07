@@ -911,6 +911,9 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="PlayerAnimation"]
+libraries = {
+"": SubResource("AnimationLibrary_lceto")
+}
 tree_root = SubResource("AnimationNodeStateMachine_vcvcd")
 anim_player = NodePath("../AnimationPlayer")
 parameters/AK/blend_position = Vector2(0.00210226, 0.990408)
