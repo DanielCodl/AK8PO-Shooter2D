@@ -125,3 +125,9 @@ func apply_gravity(delta):
 func on_dash_finish():
 	velocity.x = move_toward(velocity.x, 0, 500)
 	gravity_multiplier = 1
+
+
+func block_movement():
+	can_move = false
+	velocity = Vector2.ZERO
+	$PlayerGraphics/Legs.stop()
