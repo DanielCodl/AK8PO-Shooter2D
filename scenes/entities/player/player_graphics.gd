@@ -20,3 +20,4 @@ func update_torso(direction, ducking, current_gun):
 	$Torso.position.y = y_offset if ducking else 0
 	$AnimationTree["parameters/AK/blend_position"] = direction
 	$AnimationTree["parameters/Shotgun/blend_position"] = direction
+	$AnimationTree["parameters/Rocket/blend_position"] = direction

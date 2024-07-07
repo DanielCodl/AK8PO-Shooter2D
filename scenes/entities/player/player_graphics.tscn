@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://b4lyxcctcowq6"]
+[gd_scene load_steps=77 format=3 uid="uid://b4lyxcctcowq6"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/player_graphics.gd" id="1_64e5j"]
 [ext_resource type="Texture2D" uid="uid://dh4cvrwqfclfg" path="res://graphics/entities/player.png" id="1_yb34d"]
@@ -551,6 +551,49 @@ blend_point_7/node = SubResource("AnimationNodeAnimation_l6yjp")
 blend_point_7/pos = Vector2(1, -1)
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qij56"]
+animation = &"ro_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i8tnp"]
+animation = &"ro_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_upl12"]
+animation = &"ro_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4db7c"]
+animation = &"ro_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ftr3l"]
+animation = &"ro_down_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7xjij"]
+animation = &"ro_up_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7qte3"]
+animation = &"ro_up_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ca1os"]
+animation = &"ro_down_left"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_taqkx"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_qij56")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_i8tnp")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_upl12")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_4db7c")
+blend_point_3/pos = Vector2(-1, 0)
+blend_point_4/node = SubResource("AnimationNodeAnimation_ftr3l")
+blend_point_4/pos = Vector2(1, 1)
+blend_point_5/node = SubResource("AnimationNodeAnimation_7xjij")
+blend_point_5/pos = Vector2(1, -1)
+blend_point_6/node = SubResource("AnimationNodeAnimation_7qte3")
+blend_point_6/pos = Vector2(-1, -1)
+blend_point_7/node = SubResource("AnimationNodeAnimation_ca1os")
+blend_point_7/pos = Vector2(-1, 1)
+blend_mode = 1
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_px2j0"]
 animation = &"sg_right"
 
@@ -605,12 +648,31 @@ advance_expression = "selected_gun == options.SHOTGUN"
 advance_mode = 2
 advance_expression = "selected_gun == options.AK"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ov1gt"]
+advance_mode = 2
+advance_expression = "selected_gun == options.ROCKET"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_imenq"]
+advance_mode = 2
+advance_expression = "selected_gun == options.AK"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w1ejl"]
+advance_mode = 2
+advance_expression = "selected_gun == options.SHOTGUN"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n4iq4"]
+advance_mode = 2
+advance_expression = "selected_gun == options.ROCKET"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3wwxy"]
 states/AK/node = SubResource("AnimationNodeBlendSpace2D_iomjn")
 states/AK/position = Vector2(369, 100)
+states/Rocket/node = SubResource("AnimationNodeBlendSpace2D_taqkx")
+states/Rocket/position = Vector2(457, -29)
 states/Shotgun/node = SubResource("AnimationNodeBlendSpace2D_a64tt")
 states/Shotgun/position = Vector2(552, 100)
-transitions = ["Start", "AK", SubResource("AnimationNodeStateMachineTransition_qi1en"), "AK", "Shotgun", SubResource("AnimationNodeStateMachineTransition_gtme7"), "Shotgun", "AK", SubResource("AnimationNodeStateMachineTransition_ubkn0")]
+transitions = ["Start", "AK", SubResource("AnimationNodeStateMachineTransition_qi1en"), "AK", "Shotgun", SubResource("AnimationNodeStateMachineTransition_gtme7"), "Shotgun", "AK", SubResource("AnimationNodeStateMachineTransition_ubkn0"), "AK", "Rocket", SubResource("AnimationNodeStateMachineTransition_ov1gt"), "Rocket", "AK", SubResource("AnimationNodeStateMachineTransition_imenq"), "Rocket", "Shotgun", SubResource("AnimationNodeStateMachineTransition_w1ejl"), "Shotgun", "Rocket", SubResource("AnimationNodeStateMachineTransition_n4iq4")]
+graph_offset = Vector2(0, -98.7049)
 
 [node name="PlayerGraphics" type="Node2D"]
 script = ExtResource("1_64e5j")
@@ -637,5 +699,6 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_3wwxy")
 anim_player = NodePath("../AnimationPlayer")
 parameters/AK/blend_position = Vector2(0.5, 0)
+parameters/Rocket/blend_position = Vector2(-0.00409836, 1.01533)
 parameters/Shotgun/blend_position = Vector2(0, 0)
 script = ExtResource("3_r6mx1")
