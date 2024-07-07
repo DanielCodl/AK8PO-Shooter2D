@@ -22,7 +22,7 @@ var gravity_multiplier := 1
 @export_group('gun')
 var aim_direction := Vector2.RIGHT
 @export var crosshair_distance := 20
-const crosshair_y_offset := 6
+const y_offset := 6
 
 func _ready():
 	$Timers/DashCooldown.wait_time = dash_cooldown
@@ -40,6 +40,7 @@ func _process(delta):
 func animate():
 	$Crosshair.update(aim_direction, crosshair_distance, ducking)
 	$PlayerGraphics.update_legs(direction, is_on_floor(), ducking)
+	$PlayerGraphics.update_torso(aim_direction, ducking, 0)
 
 func get_input():
 	# horizontal movement 
