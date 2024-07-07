@@ -23,3 +23,6 @@ layer_0/tile_data = PackedInt32Array(458773, 655360, 11, 524309, 655360, 12, 589
 
 [node name="TransitionGate" parent="TransitionGates" index="0" instance=ExtResource("3_ywfb1")]
 position = Vector2(-128, 445)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." index="4"]
+color = Color(0, 0.317647, 0.317647, 1)
