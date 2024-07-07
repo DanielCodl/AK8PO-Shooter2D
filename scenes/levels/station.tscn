@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://tolhbwobinx8"]
+[gd_scene load_steps=5 format=3 uid="uid://tolhbwobinx8"]
 
 [ext_resource type="PackedScene" uid="uid://coa78sxepphhw" path="res://scenes/levels/level.tscn" id="1_nj735"]
 [ext_resource type="TileSet" uid="uid://c1s3xfgccd2py" path="res://scenes/levels/level.tres" id="2_1kl32"]
 [ext_resource type="PackedScene" uid="uid://cl74b3n23jnjt" path="res://scenes/entities/player/player.tscn" id="3_7ab4q"]
+[ext_resource type="PackedScene" uid="uid://dnpfp5lo42n4e" path="res://scenes/objects/light.tscn" id="4_21uc3"]
 
 [node name="Station" instance=ExtResource("1_nj735")]
 
@@ -25,3 +26,6 @@ position = Vector2(441, 131)
 
 [node name="FG" parent="FG" index="0"]
 layer_0/tile_data = PackedInt32Array(1507362, 458752, 21, 1507358, 786433, 23, 1572894, 786433, 24, 1507359, 851969, 23, 1572895, 851969, 24, 1507360, 917505, 23, 1572896, 917505, 24, 1507361, 983041, 23, 1572897, 983041, 24, 1507341, 786433, 23, 1572877, 786433, 24, 1507342, 851969, 23, 1572878, 851969, 24, 1507343, 917505, 23, 1572879, 917505, 24, 1507344, 983041, 23, 1572880, 983041, 24, 2031663, 0, 5, 2097199, 0, 6, 2031664, 65536, 5, 2097200, 65536, 6, 2031665, 131072, 5, 2097201, 131072, 6, 2031666, 65536, 5, 2097202, 65536, 6, 2031667, 131072, 5, 2097203, 131072, 6, 2031668, 196608, 5, 2097204, 196608, 6, 2031669, 262144, 5, 2097205, 262144, 6, 1966134, 655360, 11, 2031670, 655360, 12, 2097206, 655360, 13, 1966135, 720896, 11, 2031671, 720896, 12, 2097207, 720896, 13, 2031624, 851969, 2, 2097160, 851969, 3, 1769513, 655360, 11, 1835049, 655360, 12, 1900585, 655360, 13, 1769514, 720896, 11, 1835050, 720896, 12, 1900586, 720896, 13)
+
+[node name="Light" parent="." index="3" instance=ExtResource("4_21uc3")]
+position = Vector2(515, 86)
