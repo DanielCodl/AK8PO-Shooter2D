@@ -23,6 +23,7 @@ var gravity_multiplier := 1
 var aim_direction := Vector2.RIGHT
 @export var crosshair_distance := 20
 const y_offset := 6
+var current_gun = Global.guns.AK
 
 func _ready():
 	$Timers/DashCooldown.wait_time = dash_cooldown
@@ -40,7 +41,7 @@ func _process(delta):
 func animate():
 	$Crosshair.update(aim_direction, crosshair_distance, ducking)
 	$PlayerGraphics.update_legs(direction, is_on_floor(), ducking)
-	$PlayerGraphics.update_torso(aim_direction, ducking, 0)
+	$PlayerGraphics.update_torso(aim_direction, ducking, current_gun)
 
 func get_input():
 	# horizontal movement 
@@ -65,12 +66,16 @@ func get_input():
 	# ducking
 	ducking = Input.is_action_pressed("duck") and is_on_floor()
 
-	#aim
+	# aim
 	var aim_input_gamepad = Input.get_vector("aim_left","aim_right","aim_up","aim_down")
 	var aim_input_mouse = get_local_mouse_position().normalized()
 	var aim_input = aim_input_gamepad if gamepad_active else aim_input_mouse
 	if aim_input.length() > 0.5:
 		aim_direction = Vector2(round(aim_input.x),round(aim_input.y))
+		
+	# switch
+	if Input.is_action_just_pressed("switch"):
+		current_gun = Global.guns[Global.guns.keys()[(current_gun + 1) % len(Global.guns)]]
 	
 	
 func _input(event):
