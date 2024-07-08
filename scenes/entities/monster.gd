@@ -10,7 +10,7 @@ var y_offset: float
 
 var rng = RandomNumberGenerator.new()
 
-func _process(delta):
+func _process(_delta):
 	var x = player.position.x + cam_size / 2 - 10
 	x = max(limits.x, min(limits.y, x))
 	var y = player.position.y + y_offset
@@ -52,6 +52,12 @@ func _on_move_timer_timeout():
 	var tween = create_tween()
 	tween.tween_property(self, "y_offset", rng.randf_range(y_range.x,y_range.y), 0.6)
 	tween.tween_callback($Timers/MoveTimer.start)
+
+func trigger_attack():
+	var option_index = rng.randi_range(0, $BulletOptions.get_child_count() - 1)
+	var selected = $BulletOptions.get_child(option_index)
+	for marker in selected.get_children():
+		shoot.emit(marker.global_position, Vector2.LEFT, Global.guns.AK)
 
 func return_to_idle():
 	$AnimationPlayer.current_animation = "idle"

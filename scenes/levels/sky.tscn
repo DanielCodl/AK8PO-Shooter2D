@@ -19,6 +19,7 @@ layer_0/tile_data = PackedInt32Array(1507346, 131072, 0, 1507347, 131072, 0, 157
 
 [node name="Player" parent="Main/Entities" index="0" instance=ExtResource("2_rq4q0")]
 position = Vector2(116, 360)
+metadata/_edit_horizontal_guides_ = [-3.0, 8.0]
 
 [node name="Monster" parent="Main/Entities" index="1" instance=ExtResource("3_ilqfv")]
 position = Vector2(247, 311)

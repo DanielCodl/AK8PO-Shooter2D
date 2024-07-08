@@ -41,7 +41,7 @@ ak_cooldown = 0.5
 shotgun_cooldown = 1.2
 rocket_cooldown = 1.5
 metadata/_edit_vertical_guides_ = [-48.0, -36.0, -35.0]
-metadata/_edit_horizontal_guides_ = [-3.0, 8.0]
+metadata/_edit_horizontal_guides_ = [0.0, 8.0]
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(0, -15)

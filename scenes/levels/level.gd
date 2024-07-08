@@ -1,6 +1,7 @@
 extends Node2D
 
 const explosion_scene := preload("res://scenes/projectiles/explosion.tscn")
+const bullet_scene := preload("res://scenes/projectiles/bullet.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,9 +12,9 @@ func _ready():
 			entity.connect("detonate", create_explosion)
 
 func create_bullet(pos, dir, bullet_type):
-	print(pos)
-	print(dir)
-	print(bullet_type)
+	var bullet = bullet_scene.instantiate()
+	$Main/Projectiles.add_child(bullet)
+	bullet.setup(pos, dir, bullet_type)
 
 func create_explosion(pos):
 	var explosion = explosion_scene.instantiate()
