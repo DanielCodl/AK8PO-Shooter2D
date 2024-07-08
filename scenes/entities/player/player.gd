@@ -166,3 +166,6 @@ func shoot_gun():
 		$GPUParticles2D.emitting = true
 		if aim_direction.y == 1 and velocity.y >= 0:
 			gun_jump = true
+
+func get_cam():
+	return $Camera2D
