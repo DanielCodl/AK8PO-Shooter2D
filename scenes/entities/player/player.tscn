@@ -33,6 +33,7 @@ acceleration = 700
 friction = 900
 dash_cooldown = 0.5
 jump_strength = 300
+gun_jump_strength = 180
 gravity = 600
 terminal_velocity = 500
 crosshair_distance = 20

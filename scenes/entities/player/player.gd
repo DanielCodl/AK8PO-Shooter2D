@@ -13,9 +13,11 @@ var gamepad_active := true
 
 @export_group('jump')
 @export var jump_strength := 300
+@export var gun_jump_strength := 180
 @export var gravity := 600
 @export var terminal_velocity := 500
 var jump := false
+var gun_jump := false
 var faster_fall := false
 var gravity_multiplier := 1
 
@@ -108,6 +110,12 @@ func apply_movement(delta):
 		velocity.y = -jump_strength
 		jump = false
 		faster_fall = false
+		
+	# gun jump
+	if gun_jump:
+		velocity.y = -gun_jump_strength
+		gun_jump = false
+		faster_fall = false
 	
 	var on_floor = is_on_floor()
 	move_and_slide()
@@ -156,4 +164,5 @@ func shoot_gun():
 		$GPUParticles2D.position = $Crosshair.position
 		$GPUParticles2D.process_material.set("direction", aim_direction)
 		$GPUParticles2D.emitting = true
-		# jump	
+		if aim_direction.y == 1 and velocity.y >= 0:
+			gun_jump = true
