@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://tolhbwobinx8"]
+[gd_scene load_steps=10 format=3 uid="uid://tolhbwobinx8"]
 
 [ext_resource type="PackedScene" uid="uid://coa78sxepphhw" path="res://scenes/levels/level.tscn" id="1_nj735"]
 [ext_resource type="TileSet" uid="uid://c1s3xfgccd2py" path="res://scenes/levels/level.tres" id="2_1kl32"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dh1wbsf86angx" path="res://scenes/entities/drone.tscn" id="5_6aebo"]
 [ext_resource type="PackedScene" uid="uid://dfad0rnhouvxk" path="res://scenes/objects/saw.tscn" id="5_oti8b"]
 [ext_resource type="PackedScene" uid="uid://c7aswr8bngtce" path="res://scenes/objects/transition_gate.tscn" id="5_r2lhj"]
+[ext_resource type="PackedScene" uid="uid://snoh3exxovod" path="res://scenes/entities/soldier.tscn" id="6_l5e6v"]
 
 [sub_resource type="Curve2D" id="Curve2D_wknwu"]
 _data = {
@@ -42,10 +43,13 @@ layer_0/tile_data = PackedInt32Array(589824, 131073, 0, 589825, 458753, 0, 58982
 position = Vector2(87, 353)
 
 [node name="Drone" parent="Main/Entities" index="1" instance=ExtResource("5_6aebo")]
-position = Vector2(255, 320)
+position = Vector2(938, 94)
+
+[node name="Soldier" parent="Main/Entities" index="2" instance=ExtResource("6_l5e6v")]
+position = Vector2(175, 339)
 
 [node name="Saw" parent="Main/Objects" index="0" instance=ExtResource("5_oti8b")]
-position = Vector2(0, 1)
+position = Vector2(1, -2)
 
 [node name="Path2D" type="Path2D" parent="Main/Objects/Saw" index="2"]
 curve = SubResource("Curve2D_wknwu")
