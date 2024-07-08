@@ -11,7 +11,9 @@ func _ready():
 			entity.connect("detonate", create_explosion)
 
 func create_bullet(pos, dir, bullet_type):
-	pass
+	print(pos)
+	print(dir)
+	print(bullet_type)
 
 func create_explosion(pos):
 	var explosion = explosion_scene.instantiate()

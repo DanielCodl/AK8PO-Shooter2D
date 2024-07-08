@@ -41,6 +41,9 @@ layer_0/tile_data = PackedInt32Array(589824, 131073, 0, 589825, 458753, 0, 58982
 
 [node name="Player" parent="Main/Entities" index="0" instance=ExtResource("3_7ab4q")]
 position = Vector2(528, 350)
+ak_cooldown = 0.5
+shotgun_cooldown = 1.2
+rocket_cooldown = 1.5
 
 [node name="Drone" parent="Main/Entities" index="1" instance=ExtResource("5_6aebo")]
 position = Vector2(938, 94)
