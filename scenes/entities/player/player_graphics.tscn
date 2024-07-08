@@ -1,8 +1,14 @@
-[gd_scene load_steps=77 format=3 uid="uid://b4lyxcctcowq6"]
+[gd_scene load_steps=80 format=3 uid="uid://b4lyxcctcowq6"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/player_graphics.gd" id="1_64e5j"]
 [ext_resource type="Texture2D" uid="uid://dh4cvrwqfclfg" path="res://graphics/entities/player.png" id="1_yb34d"]
+[ext_resource type="Shader" uid="uid://b6b3gv3btcjte" path="res://shaders/flash.tres" id="2_wjd06"]
 [ext_resource type="Script" path="res://scenes/entities/player/AnimationTree.gd" id="3_r6mx1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pi762"]
+shader = ExtResource("2_wjd06")
+shader_parameter/Color = Color(1, 1, 1, 1)
+shader_parameter/Progress = null
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dkxfd"]
 atlas = ExtResource("1_yb34d")
@@ -103,6 +109,11 @@ animations = [{
 "name": &"run",
 "speed": 10.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jd4jc"]
+shader = ExtResource("2_wjd06")
+shader_parameter/Color = Color(1, 1, 1, 1)
+shader_parameter/Progress = null
 
 [sub_resource type="Animation" id="Animation_mbmsh"]
 length = 0.001
@@ -678,11 +689,13 @@ graph_offset = Vector2(0, -98.7049)
 script = ExtResource("1_64e5j")
 
 [node name="Legs" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_pi762")
 sprite_frames = SubResource("SpriteFrames_1b37g")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="Torso" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_jd4jc")
 texture = ExtResource("1_yb34d")
 hframes = 8
 vframes = 10

@@ -40,8 +40,7 @@ crosshair_distance = 20
 ak_cooldown = 0.5
 shotgun_cooldown = 1.2
 rocket_cooldown = 1.5
-metadata/_edit_vertical_guides_ = [-48.0, -36.0, -35.0]
-metadata/_edit_horizontal_guides_ = [0.0, 8.0]
+metadata/_edit_horizontal_guides_ = [132.0]
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(0, -15)
@@ -72,8 +71,8 @@ one_shot = true
 one_shot = true
 
 [node name="Crosshair" type="Sprite2D" parent="." index="3"]
-position = Vector2(0, -16)
-scale = Vector2(0.25, 0.265)
+position = Vector2(0, -20)
+scale = Vector2(0.236, 0.25)
 texture = ExtResource("4_alvns")
 script = ExtResource("5_43q4i")
 

@@ -1,26 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://bnqe0q2ap1fmg"]
+[gd_scene load_steps=11 format=3 uid="uid://bnqe0q2ap1fmg"]
 
 [ext_resource type="PackedScene" uid="uid://b68vs0af4e7hi" path="res://scenes/entities/entity.tscn" id="1_tv4re"]
 [ext_resource type="Script" path="res://scenes/entities/monster.gd" id="2_qlx5b"]
 [ext_resource type="Texture2D" uid="uid://qu4x05j28eh7" path="res://graphics/entities/attack.png" id="2_x3uir"]
+[ext_resource type="Shader" uid="uid://b6b3gv3btcjte" path="res://shaders/flash.tres" id="3_f5m55"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cl07h"]
 size = Vector2(38, 93)
 
-[sub_resource type="Animation" id="Animation_bvvrh"]
-resource_name = "idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ndxk"]
+shader = ExtResource("3_f5m55")
+shader_parameter/Color = Color(1, 1, 1, 1)
+shader_parameter/Progress = null
 
 [sub_resource type="Animation" id="Animation_4b80a"]
 length = 0.001
@@ -69,6 +60,21 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_bvvrh"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mnimd"]
 _data = {
 "RESET": SubResource("Animation_4b80a"),
@@ -95,6 +101,7 @@ one_shot = true
 autostart = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="2"]
+material = SubResource("ShaderMaterial_6ndxk")
 position = Vector2(-22, -1)
 texture = ExtResource("2_x3uir")
 hframes = 5

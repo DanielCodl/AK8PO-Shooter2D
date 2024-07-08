@@ -26,7 +26,7 @@ func _process(delta):
 func _on_body_entered(body):
 	detonate.emit(position)
 	if "hit" in body:
-		body.hit(damage)
+		body.hit(damage, body.get_sprites())
 	queue_free()
 
 

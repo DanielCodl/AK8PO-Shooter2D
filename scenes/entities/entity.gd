@@ -8,12 +8,14 @@ var health := 100:
 		if health <= 0: 
 			trigger_death()
 
-func hit(damage):
+func hit(damage, nodes):
 	if not $Timers/InvulTimer.time_left:
 		health -= damage
 		$Timers/InvulTimer.start()
+		flash(nodes)
 
-	# shader
+func flash(nodes):
+	print(nodes)
 
 	
 func trigger_death():
