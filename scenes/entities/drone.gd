@@ -44,4 +44,5 @@ func _on_player_detection_area_body_entered(_body):
 
 func _on_collision_detection_area_body_entered(body):
 	if body != self:
+		detonate.emit(global_position)
 		queue_free()
