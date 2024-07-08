@@ -61,3 +61,6 @@ func trigger_attack():
 
 func return_to_idle():
 	$AnimationPlayer.current_animation = "idle"
+
+func get_sprites():
+	return [$Sprite2D]

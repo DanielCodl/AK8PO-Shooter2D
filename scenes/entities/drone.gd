@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Entity
 
 var active := false
 var speed := Global.enemy_parameters["drone"]["speed"]
@@ -46,3 +46,6 @@ func _on_collision_detection_area_body_entered(body):
 	if body != self:
 		detonate.emit(global_position)
 		queue_free()
+		
+func get_sprites():
+	return [$AnimatedSprite2D]

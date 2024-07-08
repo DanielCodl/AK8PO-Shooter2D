@@ -15,8 +15,14 @@ func hit(damage, nodes):
 		flash(nodes)
 
 func flash(nodes):
-	print(nodes)
-
+	var tween = create_tween()
+	tween.tween_method(set_flash_value.bind(nodes), 0.0, 1.0, 0.1).set_trans(Tween.TRANS_QUAD)
+	tween.tween_method(set_flash_value.bind(nodes), 1.0, 0.0, 0.4).set_trans(Tween.TRANS_QUAD)
+	
+func set_flash_value(value: float, nodes):
+	for node in nodes:
+		node.material.set_shader_parameter("Progress", value)
+		
 	
 func trigger_death():
 	print("death")
