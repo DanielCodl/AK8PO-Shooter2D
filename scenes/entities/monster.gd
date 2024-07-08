@@ -44,10 +44,14 @@ func _process(delta):
 
 
 func _on_attack_timer_timeout():
-	pass # Replace with function body.
-
+	$AnimationPlayer.current_animation = "attack"
+	$Timers/AttackTimer.wait_time = rng.randf_range(0.5,2.0)
+	$Timers/AttackTimer.start()
 
 func _on_move_timer_timeout():
 	var tween = create_tween()
 	tween.tween_property(self, "y_offset", rng.randf_range(y_range.x,y_range.y), 0.6)
 	tween.tween_callback($Timers/MoveTimer.start)
+
+func return_to_idle():
+	$AnimationPlayer.current_animation = "idle"
