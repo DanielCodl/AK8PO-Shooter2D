@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Entity
 
 var x_direction := 1
 var speed = Global.enemy_parameters["soldier"]["speed"]
@@ -70,3 +70,7 @@ func check_cliff():
 		x_direction = -1
 	if x_direction < 0 and not $FloorRays/Left.get_collider():
 		x_direction = 1
+
+func trigger_attack():
+	var dir = (player.position - position).normalized()
+	shoot.emit(position + dir * 20, dir, Global.guns.AK)

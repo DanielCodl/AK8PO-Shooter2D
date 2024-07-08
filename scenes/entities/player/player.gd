@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Entity
 
 @export_group('move')
 @export var speed := 200
