@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://snoh3exxovod"]
+[gd_scene load_steps=15 format=3 uid="uid://snoh3exxovod"]
 
 [ext_resource type="PackedScene" uid="uid://b68vs0af4e7hi" path="res://scenes/entities/entity.tscn" id="1_xbpm4"]
 [ext_resource type="Script" path="res://scenes/entities/soldier.gd" id="2_b5ide"]
@@ -133,7 +133,12 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bf1px"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bgrvl"]
+size = Vector2(14, 30)
+
 [node name="Soldier" instance=ExtResource("1_xbpm4")]
+collision_layer = 4
+collision_mask = 19
 script = ExtResource("2_b5ide")
 
 [node name="CollisionShape2D" parent="." index="0"]
@@ -150,3 +155,19 @@ position = Vector2(0, -4)
 texture = ExtResource("2_smv57")
 hframes = 24
 frame = 11
+
+[node name="WallCheckArea" type="Area2D" parent="." index="4"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCheckArea" index="0"]
+shape = SubResource("RectangleShape2D_bgrvl")
+
+[node name="FloorRays" type="Node2D" parent="." index="5"]
+
+[node name="Right" type="RayCast2D" parent="FloorRays" index="0"]
+target_position = Vector2(20, 20)
+
+[node name="Left" type="RayCast2D" parent="FloorRays" index="1"]
+target_position = Vector2(-20, 20)
+
+[connection signal="body_entered" from="WallCheckArea" to="." method="_on_wall_check_area_body_entered"]

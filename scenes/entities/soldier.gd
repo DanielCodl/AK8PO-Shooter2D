@@ -8,6 +8,8 @@ var attack := false
 
 func _process(delta):
 	velocity.x = x_direction * speed * speed_modifier
+	check_cliff()
+	# animate
 	move_and_slide()
 
 #const SPEED = 300.0
@@ -35,3 +37,13 @@ func _process(delta):
 		#velocity.x = move_toward(velocity.x, 0, SPEED)
 #
 	#move_and_slide()
+
+
+func _on_wall_check_area_body_entered(body):
+	x_direction *= -1
+	
+func check_cliff():
+	if x_direction > 0 and not $FloorRays/Right.get_collider():
+		x_direction = -1
+	if x_direction < 0 and not $FloorRays/Left.get_collider():
+		x_direction = 1
