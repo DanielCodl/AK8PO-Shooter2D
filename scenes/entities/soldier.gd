@@ -9,8 +9,31 @@ var attack := false
 func _process(delta):
 	velocity.x = x_direction * speed * speed_modifier
 	check_cliff()
-	# animate
+	check_player_distance()
+	animate()
 	move_and_slide()
+	
+func check_player_distance():
+	if position.distance_to(player.position) < 120:
+		attack = true
+		speed_modifier = 0
+	else:
+		attack = false
+		speed_modifier = 1
+	
+func animate():
+	$Sprite2D.flip_h = x_direction < 0
+	if attack:
+		var side = "right"
+		var difference = (player.position - position).normalized()
+		$Sprite2D.flip_h = difference.x < 0
+		if difference.y < 0.5 and abs(difference.x) < 0.4:
+			side = "up"
+		if difference.y > 0.5 and abs(difference.x) < 0.4:
+			side = "down"			
+		$AnimationPlayer.current_animation = "shoot_"+ side
+		return
+	$AnimationPlayer.current_animation = "run" if x_direction else "idle"
 
 #const SPEED = 300.0
 #const JUMP_VELOCITY = -400.0

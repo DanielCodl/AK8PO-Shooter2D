@@ -46,7 +46,7 @@ position = Vector2(528, 350)
 position = Vector2(938, 94)
 
 [node name="Soldier" parent="Main/Entities" index="2" instance=ExtResource("6_l5e6v")]
-position = Vector2(447, 337)
+position = Vector2(476, 288)
 
 [node name="Saw" parent="Main/Objects" index="0" instance=ExtResource("5_oti8b")]
 position = Vector2(1, -2)
