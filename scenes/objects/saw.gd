@@ -18,5 +18,6 @@ func _process(delta):
 	path_follow.progress += speed * delta * direction
 	position = path_follow.position
 
-func _on_body_entered(_body):
-	print ("player hit")
+func _on_body_entered(body):
+	if "hit" in body:
+		body.hit(10)

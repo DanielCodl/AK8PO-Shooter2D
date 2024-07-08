@@ -2,6 +2,22 @@ class_name Entity
 extends CharacterBody2D
 
 signal shoot(pos, dir, bullet_type)
+var health := 100:
+	set(value):
+		health = value
+		if health <= 0: 
+			trigger_death()
+
+func hit(damage):
+	if not $Timers/InvulTimer.time_left:
+		health -= damage
+		$Timers/InvulTimer.start()
+
+	# shader
+
+	
+func trigger_death():
+	print("death")
 
 #const SPEED = 300.0
 #const JUMP_VELOCITY = -400.0
