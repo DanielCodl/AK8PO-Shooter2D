@@ -52,3 +52,7 @@ func _on_collision_detection_area_body_entered(body):
 		
 func get_sprites():
 	return [$AnimatedSprite2D]
+
+func trigger_death():
+	detonate.emit(global_position)
+	queue_free()

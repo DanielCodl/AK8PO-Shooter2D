@@ -25,7 +25,7 @@ func set_flash_value(value: float, nodes):
 		
 	
 func trigger_death():
-	print("death")
+	pass
 
 #const SPEED = 300.0
 #const JUMP_VELOCITY = -400.0

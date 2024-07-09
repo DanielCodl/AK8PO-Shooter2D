@@ -10,11 +10,12 @@ func _ready():
 	health = Global.enemy_parameters["soldier"]["health"]
 
 func _process(_delta):
-	velocity.x = x_direction * speed * speed_modifier
-	check_cliff()
-	check_player_distance()
-	animate()
-	move_and_slide()
+	if health > 0:
+		velocity.x = x_direction * speed * speed_modifier
+		check_cliff()
+		check_player_distance()
+		animate()
+		move_and_slide()
 	
 func check_player_distance():
 	if position.distance_to(player.position) < 120:
@@ -80,3 +81,12 @@ func trigger_attack():
 
 func get_sprites():
 	return [$Sprite2D]
+
+func trigger_death():
+	speed_modifier = 0
+	$AnimationPlayer.current_animation = "death"
+	call_deferred("disable_collisions")
+	#queue_free()
+
+func disable_collisions():
+	$CollisionShape2D.disabled = true
