@@ -154,7 +154,7 @@ position = Vector2(-22, -1)
 texture = ExtResource("2_x3uir")
 hframes = 5
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3" groups=["Enemies"]]
 libraries = {
 "": SubResource("AnimationLibrary_mnimd")
 }
