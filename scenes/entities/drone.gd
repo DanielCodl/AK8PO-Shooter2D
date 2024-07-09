@@ -5,6 +5,9 @@ var speed := Global.enemy_parameters["drone"]["speed"]
 @onready var player = get_tree().get_first_node_in_group("Player")
 signal detonate(pos: Vector2)
 
+func _ready():
+	health = Global.enemy_parameters["drone"]["health"]
+
 func _process(_delta):
 	if active:
 		var direction = (player.position - position).normalized()

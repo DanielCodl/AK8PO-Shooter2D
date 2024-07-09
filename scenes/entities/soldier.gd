@@ -6,6 +6,9 @@ var speed_modifier := 1
 var attack := false
 @onready var player = get_tree().get_first_node_in_group("Player")
 
+func _ready():
+	health = Global.enemy_parameters["soldier"]["health"]
+
 func _process(_delta):
 	velocity.x = x_direction * speed * speed_modifier
 	check_cliff()

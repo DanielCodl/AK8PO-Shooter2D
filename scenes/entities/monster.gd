@@ -10,6 +10,9 @@ var y_offset: float
 
 var rng = RandomNumberGenerator.new()
 
+func _ready():
+	health = Global.enemy_parameters["monster"]["health"]
+
 func _process(_delta):
 	var x = player.position.x + cam_size / 2 - 10
 	x = max(limits.x, min(limits.y, x))
