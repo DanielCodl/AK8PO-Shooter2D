@@ -2,7 +2,7 @@ extends Node
 
 enum guns {AK, SHOTGUN, ROCKET}
 const enemy_parameters = {
-	"drone": {"speed": 110, "health": 20},
+	"drone": {"speed": 110, "health": 20, "damage": 15},
 	"soldier": {"speed": 50, "health": 60},
 	"monster": {"health": 200}
 }

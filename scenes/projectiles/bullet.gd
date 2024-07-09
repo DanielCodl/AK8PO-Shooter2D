@@ -18,12 +18,12 @@ func setup(pos, dir, type):
 		$CollisionShape2D.disabled =  true
 		$Sprite2D.hide()		
 		$PointLight2D.hide()
-		for enemy in get_tree().get_nodes_in_group("Enemies"):
-			var bullet_angle = rad_to_deg(dir.angle())
-			var enemy_angle = rad_to_deg((enemy.position - pos).angle())
-			# enemy is close enough to the player
-			if pos.distance_to(enemy.position) < Global.gun_data[Global.guns.SHOTGUN]["range"] and abs(bullet_angle - enemy_angle) < 90:
-				enemy.hit(Global.gun_data[Global.guns.SHOTGUN]["damage"], enemy.get_sprites())
+		#for enemy in get_tree().get_nodes_in_group("Enemies"):
+			#var bullet_angle = rad_to_deg(dir.angle())
+			#var enemy_angle = rad_to_deg((enemy.position - pos).angle())
+			## enemy is close enough to the player
+			#if pos.distance_to(enemy.position) < Global.gun_data[Global.guns.SHOTGUN]["range"] and abs(bullet_angle - enemy_angle) < 90:
+				#enemy.hit(Global.gun_data[Global.guns.SHOTGUN]["damage"], enemy.get_sprites())
 
 func _process(delta):
 	position += direction * speed * delta

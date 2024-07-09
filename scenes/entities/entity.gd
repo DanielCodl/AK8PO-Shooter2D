@@ -5,6 +5,8 @@ signal shoot(pos, dir, bullet_type)
 var health := 100:
 	set(value):
 		health = value
+		if is_in_group("Player"):
+			get_tree().get_first_node_in_group("HealthCircle").update(value)
 		if health <= 0: 
 			trigger_death()
 
