@@ -172,3 +172,6 @@ func get_cam():
 
 func get_sprites():
 	return [$PlayerGraphics/Legs, $PlayerGraphics/Torso]
+
+#func trigger_death():
+	#get_tree().quit()
